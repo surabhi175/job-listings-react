@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=League+Spartan:wght@500;700&family=Roboto:wght@300&display=swap');
 
 :root{
-  --primary-color: hsl(180, 29%, 50%);
+  --primary-color: rgb(91, 164, 164);
   --background-color: hsl(180, 52%, 96%);
   --filter-table: hsl(180, 31%, 95%);
   --dark-greyish: hsl(180, 8%, 52%);
@@ -24,4 +24,11 @@ html{
 body{
   font-family: "Spartan", sans-serif;
   background-color: var(--background-color);
+}
+
+@media only screen and (max-width:375px) {
+  html{
+    font-size: 0.75rem;
+
+  }
 }

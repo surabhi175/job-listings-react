@@ -7,20 +7,33 @@ import Header from './components/Header'
 function App() {
   const [filterKeywords, setFilterKeywords] = useState([]);
 
-  const addFiletKeywords = (data) =>{ 
+  const addFilterKeywords = (data) =>{ 
     if(!filterKeywords.includes(data)){
-      setFilterKeywords([...filterKeywords.data]);
+      setFilterKeywords([...filterKeywords,data]);
     }
   }
+
+  const delKeyword = (data) => {
+    const newKeywords = filterKeywords.filter(key => key != data);
+    setFilterKeywords(newKeywords);
+  }
+
+  const clearAll = () => {
+    setFilterKeywords([]);
+  };
 
   return (
     <div className="App">
       <div className="header">
-        {
-          filterKeywords.length>0 && <Header keywords={filterKeywords} />
-        }
+        
       </div>
-      <Jobs data={data} setFilterKeywords={addFiletKeywords} />
+      <div>{
+          filterKeywords.length>0 && <Header keywords={filterKeywords} removeKeywords={delKeyword} clearAll={clearAll}/>
+        }</div>
+      <Jobs 
+        keywords={filterKeywords}
+        data={data} 
+        setKeywords={addFilterKeywords} />
     </div>
   );
 }
