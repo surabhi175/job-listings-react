@@ -5,6 +5,17 @@ const Jobs = ({data, setKeywords, keywords}) =>{
     // console.log(data);
     const [filteredData, setFilteredData] = useState([]);
 
+    // const SearchFunc = () => {
+    //     if(keywords.length>0){
+    //         const newData = filteredData.filter((d) => {
+    //             return d.position.toLowerCase().includes(keywords);
+    //         });
+    //         setFilteredData(newData);
+    //     }else{
+    //         setFilteredData(data);
+    //     }
+    // }
+
     const modifiedData= () => {
         if(keywords.length > 0){
             const newData = filteredData.filter(d => {
