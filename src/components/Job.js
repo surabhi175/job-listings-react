@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import account from '../images/account.svg';
 
 function Job(props) {
 const{
@@ -17,24 +16,30 @@ const{
     tools,
     } = props.data;
 
+    const l = props.data.company.toLowerCase().replace(/\s/g , "-");
+    console.log(l);
+
+
+    const [image, setImage] = useState("");
+    const loadImage = (imageName) => {
+        import(`../images/${imageName}.png`).then(image => {
+          setImage(image.default);
+        });
+      };
+
     let keywords = [role, level, ...languages, ...tools];
 
-    // const [icon, setIcon] = useState("");
-    // const importSvgs = () =>{
-    //     const logoSvg = import(`${logo}`).then((d) => {
-    //         // console.log(d);
-    //         setIcon(d.default);
-    //     });
-    // };
+    useEffect(() => {
+       loadImage(l);
+    }, [l]);
 
-    // useEffect(() => {
-    //    importSvgs();
-    // }, [logo]);
-
+    console.log(image);
     return (
+        
         <div className={featured ? "job-container job-container--borderLeft" : "job-container"}>
             <div className="logo">
-                <img src={account} alt="" />
+                {/* <div className="imgtag" style={{backgroundImage: `url(${props.data.logo})`, backgroundSize: "contain", width:"4rem", height:"4rem" }}></div> */}
+                <img src={image} alt="" />
             </div>
             <div className="part1">
                 <div className="company">
